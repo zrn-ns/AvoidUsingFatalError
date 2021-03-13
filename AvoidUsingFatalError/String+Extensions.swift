@@ -9,7 +9,9 @@ import Foundation
 
 extension String {
 
-    func repeated(times: UInt) throws -> String {
+    func repeated(times: Int) -> String? {
+        guard times >= 0 else { return nil }
+
         var text = ""
         (0 ..< times).forEach { _ in text += self }
         return text
