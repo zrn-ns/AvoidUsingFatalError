@@ -21,6 +21,11 @@ class StringExtensionSpec: QuickSpec {
                     expect("abc".repeated(times: 3)) == "abcabcabc"
                 }
             }
+            describe("異常パターン") {
+                it("繰り返し回数に負の数が与えられた場合、クラッシュすること") {
+                    expect { "abc".repeated(times: -1) }.to(throwAssertion())
+                }
+            }
         }
     }
 }
