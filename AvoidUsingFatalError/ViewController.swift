@@ -11,9 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        label.text = "Hello".repeated(times: 3)
     }
 
-
+    @IBOutlet private weak var label: UILabel!
 }
 
