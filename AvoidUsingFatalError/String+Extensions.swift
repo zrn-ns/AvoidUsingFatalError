@@ -9,11 +9,26 @@ import Foundation
 
 extension String {
 
-    func repeated(times: Int) -> String? {
-        guard times >= 0 else { return nil }
-
+    func repeated(times: RepeatTimes) -> String {
         var text = ""
-        (0 ..< times).forEach { _ in text += self }
+        times.range.forEach { _ in text += self }
         return text
     }
+}
+
+struct RepeatTimes {
+    enum Errors: Error {
+        case indexOutOfBounds
+    }
+
+    init(_ intValue: Int) throws {
+        guard intValue >= 0 else { throw Errors.indexOutOfBounds }
+
+        raw = intValue
+    }
+
+    static let zero = try! Self.init(0)
+
+    let raw: Int
+    var range: Range<Int> { 0 ..< raw }
 }

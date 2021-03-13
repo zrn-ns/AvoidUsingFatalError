@@ -12,9 +12,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = "Hello".repeated(times: 3)
+        var times: RepeatTimes = .zero
+        do {
+            times = try .init(3)
+        } catch {
+            // エラー処理等
+            print(error)
+        }
+        label.text = "Hello".repeated(times: times)
     }
 
     @IBOutlet private weak var label: UILabel!
 }
-
