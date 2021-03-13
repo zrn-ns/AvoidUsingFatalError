@@ -22,9 +22,11 @@ class StringExtensionSpec: QuickSpec {
                 }
             }
             describe("異常パターン") {
+                #if arch(x86_64)
                 it("繰り返し回数に負の数が与えられた場合、クラッシュすること") {
                     expect { "abc".repeated(times: -1) }.to(throwAssertion())
                 }
+                #endif
             }
         }
     }
