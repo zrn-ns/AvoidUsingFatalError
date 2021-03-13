@@ -8,8 +8,12 @@
 import Foundation
 
 extension String {
-    func repeated(times: Int) -> String {
-        precondition(times >= 0, "繰り返し回数に負の数を指定することはできません！")
+    enum Errors: Error {
+        case indexOutOfRange
+    }
+
+    func repeated(times: Int) throws -> String {
+        guard times >= 0 else { throw Errors.indexOutOfRange }
 
         var text = ""
         (0 ..< times).forEach { _ in text += self }

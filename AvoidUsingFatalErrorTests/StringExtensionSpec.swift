@@ -15,18 +15,18 @@ class StringExtensionSpec: QuickSpec {
         describe("repeated(times:)のテスト") {
             describe("正常パターン") {
                 it("繰り返し回数が0回の場合、空文字列が返ること") {
-                    expect("abc".repeated(times: 0)) == ""
+                    expect(try? "abc".repeated(times: 0)) == ""
                 }
                 it("繰り返し回数が1回以上の場合、指定回数繰り返された文字列が返ること") {
-                    expect("abc".repeated(times: 3)) == "abcabcabc"
+                    expect(try? "abc".repeated(times: 3)) == "abcabcabc"
                 }
             }
             describe("異常パターン") {
-                #if arch(x86_64)
-                it("繰り返し回数に負の数が与えられた場合、クラッシュすること") {
-                    expect { "abc".repeated(times: -1) }.to(throwAssertion())
+                it("繰り返し回数に負の数が与えられた場合、例外が発生すること") {
+                    expect {
+                        try "abc".repeated(times: -1)
+                    }.to(throwError(String.Errors.indexOutOfRange))
                 }
-                #endif
             }
         }
     }
