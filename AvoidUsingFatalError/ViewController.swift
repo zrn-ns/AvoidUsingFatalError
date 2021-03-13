@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = try! "Hello".repeated(times: 3)
+        label.text = "Hello".repeated(times: 3)
     }
 
     @IBOutlet private weak var label: UILabel!

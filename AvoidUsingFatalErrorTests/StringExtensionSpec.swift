@@ -21,13 +21,6 @@ class StringExtensionSpec: QuickSpec {
                     expect(try? "abc".repeated(times: 3)) == "abcabcabc"
                 }
             }
-            describe("異常パターン") {
-                it("繰り返し回数に負の数が与えられた場合、例外が発生すること") {
-                    expect {
-                        try "abc".repeated(times: -1)
-                    }.to(throwError(String.Errors.indexOutOfRange))
-                }
-            }
         }
     }
 }

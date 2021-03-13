@@ -8,13 +8,8 @@
 import Foundation
 
 extension String {
-    enum Errors: Error {
-        case indexOutOfRange
-    }
 
-    func repeated(times: Int) throws -> String {
-        guard times >= 0 else { throw Errors.indexOutOfRange }
-
+    func repeated(times: UInt) throws -> String {
         var text = ""
         (0 ..< times).forEach { _ in text += self }
         return text
